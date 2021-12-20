@@ -21,14 +21,23 @@ public function send($data){
 
     // SMTP configuration
     $mail->isSMTP();
-    // $mail->SMTPDebug  = 1;
-    $mail->SMTPAuth   = TRUE;
-    $mail->SMTPKeepAlive = TRUE;
-    $mail->SMTPSecure = "tls";
-    $mail->Port       = 465;
-    $mail->Host       = "ssl://smtp.gmail.com";
-    $mail->Username   = "hic@stiki.ac.id";
-    $mail->Password   = "ITbanget96";
+
+    $mail->SMTPOptions = array(
+      'ssl' => array(
+        'verify_peer' => false,
+        'verify_peer_name' => false,
+        'allow_self_signed' => true
+      )
+    );
+    
+    // $mail->SMTPDebug      = 0;
+    $mail->SMTPAuth       = TRUE;
+    $mail->SMTPKeepAlive  = TRUE;
+    $mail->SMTPSecure     = "ssl";
+    $mail->Port           = 465;
+    $mail->Host           = "smtp.gmail.com";
+    $mail->Username       = "cs.terrafl@gmail.com";
+    $mail->Password       = "password";
     $mail->setFrom("hic@stiki.ac.id", "UKM HIC STIKI Malang");
     $mail->addReplyTo("hic@stiki.ac.id", "UKM HIC STIKI Malang");
 
